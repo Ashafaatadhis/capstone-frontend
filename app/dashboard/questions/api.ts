@@ -11,7 +11,8 @@ export function authHeaders() {
 }
 
 export async function fetchQuestions() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/questions`, {
+  console.log("API URL:", process.env.NEXT_PUBLIC_API_URL);
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/questions/`, {
     method: "GET",
     headers: authHeaders(),
   });
@@ -22,7 +23,7 @@ export async function fetchQuestions() {
 
 export async function fetchQuestionById(id: string | number) {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/questions/${id}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/questions/${id}/`,
     {
       method: "GET",
       headers: authHeaders(),
@@ -34,7 +35,7 @@ export async function fetchQuestionById(id: string | number) {
 }
 
 export async function createQuestion(data: { text: string }) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/questions`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/questions/`, {
     method: "POST",
     headers: authHeaders(),
     body: JSON.stringify(data),
@@ -46,7 +47,7 @@ export async function createQuestion(data: { text: string }) {
 
 export async function updateQuestion(id: number, data: { text: string }) {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/questions/${id}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/questions/${id}/`,
     {
       method: "PUT",
       headers: authHeaders(),
@@ -60,7 +61,7 @@ export async function updateQuestion(id: number, data: { text: string }) {
 
 export async function deleteQuestion(id: number) {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/questions/${id}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/questions/${id}/`,
     {
       method: "DELETE",
       headers: authHeaders(),

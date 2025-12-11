@@ -52,6 +52,7 @@ export default function GradingClient() {
   const [shareUrl, setShareUrl] = useState("");
 
   const { data: questionData, isLoading: isLoadingQuestions } = useQuestions();
+  console.log("QUESTION DATA:", questionData);
   const questions = questionData?.data ?? [];
 
   // Hardcode callback URL (env override, otherwise same site)

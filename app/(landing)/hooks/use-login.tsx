@@ -19,13 +19,16 @@ export function useLogin() {
 
   return useMutation({
     mutationFn: async (payload: LoginPayload): Promise<LoginResponse> => {
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(payload),
-      });
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_API_URL}/auth/login/`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        }
+      );
 
       if (!res.ok) {
         throw new Error("Invalid username or password");
@@ -39,7 +42,9 @@ export function useLogin() {
       console.log(data.access_token, "LOGIN SUCCESS DATA");
       localStorage.setItem("token", data.access_token);
       // Set cookie agar middleware bisa baca
-      document.cookie = `token=${data.access_token}; path=/; max-age=${60 * 60 * 24 * 7}`;
+      document.cookie = `token=${data.access_token}; path=/; max-age=${
+        60 * 60 * 24 * 7
+      }`;
       // Simpan info user dasar untuk UI
       if (variables?.username) {
         localStorage.setItem("user_name", variables.username);

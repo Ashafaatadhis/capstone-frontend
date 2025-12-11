@@ -11,7 +11,7 @@ export function authHeaders() {
 
 export async function fetchRubricsByQuestion(questionId: string | number) {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/rubrics/question/${questionId}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/rubrics/question/${questionId}/`,
     {
       method: "GET",
       headers: authHeaders(),
@@ -23,7 +23,7 @@ export async function fetchRubricsByQuestion(questionId: string | number) {
 }
 
 export async function fetchRubricById(id: string | number) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/rubrics/${id}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/rubrics/${id}/`, {
     method: "GET",
     headers: authHeaders(),
   });
@@ -37,7 +37,7 @@ export async function createRubricForQuestion(
   data: { score: number; description: string }
 ) {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/rubrics/question/${questionId}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/rubrics/question/${questionId}/`,
     {
       method: "POST",
       headers: authHeaders(),
@@ -53,7 +53,7 @@ export async function updateRubricForQuestion(
   id: string | number,
   data: { score: number; description: string }
 ) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/rubrics/${id}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/rubrics/${id}/`, {
     method: "PUT",
     headers: authHeaders(),
     body: JSON.stringify(data),
@@ -64,7 +64,7 @@ export async function updateRubricForQuestion(
 }
 
 export async function deleteRubric(id: string | number) {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/rubrics/${id}`, {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/rubrics/${id}/`, {
     method: "DELETE",
     headers: authHeaders(),
   });
