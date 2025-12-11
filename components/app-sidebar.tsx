@@ -40,21 +40,7 @@ const data = {
         },
       ],
     },
-    {
-      title: "Rubrics",
-      url: "/dashboard/rubrics",
-      icon: BookOpen,
-      items: [
-        {
-          title: "All Rubrics",
-          url: "/dashboard/rubrics",
-        },
-        {
-          title: "Create Rubric",
-          url: "/dashboard/rubrics/create",
-        },
-      ],
-    },
+
     {
       title: "Grading",
       url: "/grading",
