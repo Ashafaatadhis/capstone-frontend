@@ -29,6 +29,7 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar"
+import { useRouter } from "next/navigation"
 
 export function NavUser({
   user,
@@ -40,6 +41,15 @@ export function NavUser({
   }
 }) {
   const { isMobile } = useSidebar()
+  const router = useRouter()
+
+  const handleLogout = () => {
+    if (typeof window === "undefined") return
+    // Clear token from local storage and cookie, then bounce to login
+    localStorage.removeItem("token")
+    document.cookie = "token=; path=/; Max-Age=0"
+    router.push("/login")
+  }
 
   return (
     <SidebarMenu>
@@ -102,7 +112,12 @@ export function NavUser({
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>
+            <DropdownMenuItem
+              onSelect={(e) => {
+                e.preventDefault()
+                handleLogout()
+              }}
+            >
               <LogOut />
               Log out
             </DropdownMenuItem>
