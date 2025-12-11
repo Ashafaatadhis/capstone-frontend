@@ -16,7 +16,7 @@ export function useGradeVideo() {
       formData.append("callback_url", callbackUrl);
       formData.append("question_id", String(questionId));
 
-      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/grade`, {
+      const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/grade/`, {
         method: "POST",
         body: formData,
       });
@@ -26,7 +26,10 @@ export function useGradeVideo() {
         throw new Error(errText || "Failed to start grading");
       }
 
-      return res.json() as Promise<{ data?: { job_id?: string }; message?: string }>;
+      return res.json() as Promise<{
+        data?: { job_id?: string };
+        message?: string;
+      }>;
     },
   });
 }
