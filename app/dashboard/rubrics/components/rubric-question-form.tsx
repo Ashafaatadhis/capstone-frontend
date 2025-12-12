@@ -57,8 +57,8 @@ export function RubricQuestionForm({
         {(field) => (
           <Input
             type="number"
-            min={1}
-            max={5}
+            min={0}
+            max={4}
             value={field.state.value}
             onChange={(e) => field.handleChange(Number(e.target.value))}
           />
@@ -81,8 +81,10 @@ export function RubricQuestionForm({
             <Loader2 className="h-4 w-4 animate-spin" />
             Saving...
           </span>
+        ) : id ? (
+          "Update Rubric"
         ) : (
-          id ? "Update Rubric" : "Create Rubric"
+          "Create Rubric"
         )}
       </Button>
     </form>
