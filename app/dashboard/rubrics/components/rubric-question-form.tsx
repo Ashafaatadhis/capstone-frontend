@@ -12,7 +12,7 @@ import {
 import { Loader2 } from "lucide-react";
 
 const schema = z.object({
-  score: z.number().min(1).max(5),
+  score: z.number().min(0).max(4),
   description: z.string().min(10, "Description is required"),
 });
 
